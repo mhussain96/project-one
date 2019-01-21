@@ -1,0 +1,132 @@
+* {
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+body {
+  background-color: rgb(138, 209, 56);
+}
+
+/* index html */
+
+.mainbox {
+  background-color: white;
+  margin-left: 450px;
+  margin-right: 450px;
+  padding: 1px 0 0 0;
+  border-radius: 20%;
+  border: 1px solid black;
+}
+
+.innerbox {
+  background-color: rgb(187, 187, 187);
+  margin: 50px;
+  padding: 10px;
+  border-radius: 20%;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.container {
+  background-color: white;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.textmouse {
+  margin-left: 50px;
+  margin-top: -60px;
+}
+
+.mouseclick {
+  height: 50px;
+  width: 50px;
+  margin-top: -50px;
+}
+
+.play {
+  color: black;
+  margin-left: 100px;
+}
+
+.trollimg {
+  margin-left: 420px;
+  width: 100px;
+  height: 100px;
+  margin-top: -100px;
+  border-radius: 10%;
+}
+
+.troll {
+  /* background: yellow; */
+  border-radius: 10%;
+  padding: 30px;
+  width: 150px;
+  height: 150px;
+  font-size: 35px;
+  text-align: center;
+  border: 2px solid yellow;
+  margin-left: -32px;
+  margin-top: -32px;
+}
+
+.trollimg:hover {
+  transform: scale(1.1) rotate(2deg);
+}
+
+/* game html */
+
+.scoreout {
+  border: 2px solid black;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+  margin-left: 1200px;
+  margin-top: -100px;
+  border-radius: 10%;
+}
+
+.scoretext {
+  margin-top: 10px;
+}
+
+#finalscore {
+  margin-top: -30px;
+}
+
+button {
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  letter-spacing: 2px;
+  border-radius: 10%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: rgb(138, 209, 56);
+  padding: 10px;
+  border-radius: 10%;
+  margin-left: 200px;
+}
+
+.grid-item {
+  background-color: white;
+  border-radius: 10%;
+  padding: 30px;
+  width: 150px;
+  height: 150px;
+  font-size: 35px;
+  align-items: center;
+  margin: 5px;
+  border: 2px solid black;
+}
+
+.nameofgame {
+  text-align: center;
+  letter-spacing: 4px;
+  color: white;
+  text-decoration: underline overline;
+}
+
+
