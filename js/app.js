@@ -14,12 +14,17 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     // random troll generator
     randomTrollGenerator() {
+      console.log(this.trolls);
+      
       for (let i = 0; i < this.boxes.length; i++) {
+        // random sequence created by math.random with amount of boxes on screen
         let randomNumber = Math.floor(Math.random() * this.boxes.length);
-        this.trolls[randomNumber].setAttribute('src', 'images\troll.jpg') ;
+        // 
+        this.trolls[randomNumber].classList.add('trollsprite');
         // let randomTroll = document.getElementsByClassName('troll');
         this.randomTrollChoices.push(this.boxes[randomNumber]);
         console.log(randomNumber);
+        
       }
     }
 
@@ -28,12 +33,10 @@ document.addEventListener("DOMContentLoaded", function() {
         const box = this.randomTrollChoices[i];
         console.log(box);
         setTimeout(function() {
-          box.style.backgroundColor = 'red';   // 2 timeouts to flash trolls
-          box.style.clear = 'red';
+          box.classList.add = 'trollsprite';   // 2 timeouts to flash trolls
         }, 1000 * i);
         setTimeout(function() {
           box.style.backgroundColor = 'rgb(255, 255, 255)';
-          box.style.clear = 'white'
         }, 1000 * i + 500);
       }
     }

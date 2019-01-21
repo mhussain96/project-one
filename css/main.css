@@ -64,9 +64,13 @@ body {
   height: 150px;
   font-size: 35px;
   text-align: center;
-  border: 2px solid yellow;
   margin-left: -32px;
   margin-top: -32px;
+}
+
+.trollsprite {
+  background-image: url('../images/troll.jpg');
+  position: relative;
 }
 
 .trollimg:hover {
