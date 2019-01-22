@@ -6,60 +6,76 @@ document.addEventListener("DOMContentLoaded", function() {
       this.trollImg = new Image();
       this.playerChoices = [];
       this.randomTrollChoices = [];
-      this.score = document.getElementById('finalscore');
-      this.startGame = document.getElementsByTagName('button');
+      this.score = 0;
+      this.startBtn = document.getElementById('start');
       this.boxes = document.getElementsByClassName('grid-item');
       this.trolls = document.getElementsByClassName('troll');
+      this.random;
+      this.timerUp = 0;
+      // this.timerUp = document.getElementById('timer');
+
       
     }
     // random troll generator
     randomTrollGenerator() {
-      console.log(this.trolls);
-      
-      for (let i = 0; i < this.boxes.length; i++) {
-        // random sequence created by math.random with amount of boxes on screen
-        let randomNumber = Math.floor(Math.random() * this.boxes.length);
-        // 
-        this.trolls[randomNumber].classList.add('trollsprite');
-        // let randomTroll = document.getElementsByClassName('troll');
-        this.randomTrollChoices.push(this.boxes[randomNumber]);
-        console.log(randomNumber);
-        
-      }
+      let randomNumber = Math.floor(Math.random() * 9); // random sequence created by math.random with amount of boxes on screen
+      this.trolls[randomNumber].classList.add('trollsprite'); // added image of troll and named it trollsprite
+      console.log(randomNumber);
     }
 
-    flashColor() {
-      for (let i = 0; i < this.randomTrollChoices.length; i++) {
-        const box = this.randomTrollChoices[i];
-        console.log(box);
-        setTimeout(function() {
-          box.classList.add = 'trollsprite';   // 2 timeouts to flash trolls
-        }, 1000 * i);
-        setTimeout(function() {
-          box.style.backgroundColor = 'rgb(255, 255, 255)';
-        }, 1000 * i + 500);
+    setTime() {
+      this.startBtn.addEventListener('click', e => {
+        setInterval(e => {
+          if (this.timerUp <= 11) {
+            //console.log(this.timerUp);
+            this.timerUp++;
+            document.getElementById('timer').innerHTML = this.timerUp;
+          }
+          if (this.timerUp === 11) {
+            alert('game over');
+          }
+        }, 1000);
+      });
+    }
+
+    //remove trolls
+    removeTroll() {
+      for (let i = 0; i < this.trolls.length; i++) {
+        this.trolls[i].classList.remove("trollsprite"); // removes trolls
       }
     }
     // adding eventlistener to boxes
     addListenersToBoxes() {
-      for (let i = 0; i < this.boxes.length; i++) {
-        this.trolls[i].addEventListener('click', e => {
-          // console.log(e.target.className);
-          this.playerChoices.push(e.target.className); 
-          if (this.trolls[i].hasAttribute('src')) {
+      for (let i = 0; i < this.trolls.length; i++) {
+        this.trolls[i].addEventListener('click', e => { // onclick function when you click on troll adds 1 point. 
+          if (e.target.className === 'troll trollsprite') {   
             console.log('hit');
-            
+            this.score++; 
+            document.getElementById('finalscore').innerHTML = this.score;
+          } else {
+            this.score--; // hitting the wrong box will make the user lose 1 point
+            document.getElementById('finalscore').innerHTML = this.score;
           }
         });
       }
     }
   }
-  const newGame = new WhackATroll();
-  newGame.addListenersToBoxes();
-  newGame.randomTrollGenerator();
-  newGame.flashColor();
-
-
+  const newGame = new WhackATroll(); // newGame is out instance of our object
+  newGame.setTime();  
+    newGame.startBtn.addEventListener('click', function(e) {
+        newGame.addListenersToBoxes();
+        //newGame.setTime();
+        setInterval(function() {
+          newGame.randomTrollGenerator();
+        }, 1100);
+        setInterval(function() {
+          newGame.randomTrollGenerator();
+        }, 800);
+        setInterval(function(){
+          newGame.removeTroll();
+        }, 1800);
+        e.target.disabled = true;
+    });
 }); // DOMContentLoaded
 
 // PSEUDOCODE
