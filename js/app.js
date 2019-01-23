@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //remove trolls
     removeTroll() {
       for (let i = 0; i < this.trolls.length; i++) {
-        this.trolls[i].classList.remove("trollsprite"); // removes trolls
+        this.trolls[i].classList.remove("trollsprite"); 
       }
     }
     // adding onclick to boxes
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var timesRun = 0;
         var stop1 = setInterval(function() {
           newGame.randomTrollGenerator();
-          timesRun += 1;
+          timesRun += 1;                            // 10000/1000 = 10 times it runs to generate troll
           if (timesRun === 10) {
             clearInterval(stop1);
           }            // generates random trolls at different times
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var timesRun2 = 0;
         var stop2 = setInterval(function() {
           newGame.randomTrollGenerator();
-          timesRun2 += 1;
+          timesRun2 += 1;                         // 10000/750 = 13.333 times it runs second troll generator
           if (timesRun2 === 13) {
             clearInterval(stop2);
           }
@@ -103,6 +103,8 @@ document.addEventListener("DOMContentLoaded", function() {
         setInterval(function(){
           newGame.removeTroll();
         }, 1800);
+        document.getElementsByClassName('grid-item').style.display = 'none';
+        document.getElementById('gameover').style.display = 'block';
         e.target.disabled = true;
     });
 }); // DOMContentLoaded

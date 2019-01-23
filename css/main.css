@@ -162,12 +162,12 @@ button {
   font-size: 50px;
 }
 
-.gameover {
-  display: none;
+#gameover {
   position: absolute;
-  margin-top: 100px;
-  margin-left: 400px;
-  margin-right: 400px;
+  display: none;
+  margin-top: -500px;
+  margin-left: 150px;
+  margin-right: 100px;
   padding: 100px;
   text-align: center;
   background-color: black;
