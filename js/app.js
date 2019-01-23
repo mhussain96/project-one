@@ -18,18 +18,17 @@ document.addEventListener("DOMContentLoaded", function() {
       document.addEventListener('mousemove', e => {
         console.log('yeah');
         
-        // circle.setAttribute('class', 'circle');
-        // circle.style.left = e.clientX + 'px';
-        // circle.style.top = e.clientY + 'px';
-        // circle.style.transition = "all 0.5s linear 0s";
-        // // document.appendChild(circle);
-        // circle.style.left = circle.offsetLeft - 20 + 'px';
-        // circle.style.top = circle.offsetTop - 20 + 'px';
+        circle.classList.add('circle1');
+        circle.style.left = e.clientX + 'px';
+        circle.style.top = e.clientY + 'px';
+        circle.style.transition = "all 0.5s linear 0s";
+        circle.style.left = circle.offsetLeft - 20 + 'px';
+        circle.style.top = circle.offsetTop - 20 + 'px';
     
-        // circle.style.width = "50px";
-        // circle.style.height = "50px";
-        // circle.style.borderWidth = "5px";
-        // circle.style.opacity = 0;
+        circle.style.width = "50px";
+        circle.style.height = "50px";
+        circle.style.borderWidth = "5px";
+        circle.style.opacity = 0;
       });
     }
 
@@ -50,13 +49,14 @@ document.addEventListener("DOMContentLoaded", function() {
           }
           if (this.timerUp === 10) {
             // this.boxes.document.getElementsByClassName('grid-item').style.display = "none";
-            // document.getElementsByClassName('gameover').style.display = "block";
-            console.log('end'); 
+            document.getElementById('gameover').style.display = "block"; 
+            document.getElementsByClassName('grid-item').style.display = 'none';
             clearInterval(interval);
           }
         }, 1000);
       });
     }
+
     //remove trolls
     removeTroll() {
       for (let i = 0; i < this.trolls.length; i++) {
@@ -103,8 +103,6 @@ document.addEventListener("DOMContentLoaded", function() {
         setInterval(function(){
           newGame.removeTroll();
         }, 1800);
-        document.getElementsByClassName('grid-item').style.display = 'none';
-        document.getElementById('gameover').style.display = 'block';
         e.target.disabled = true;
     });
 }); // DOMContentLoaded

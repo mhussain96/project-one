@@ -72,7 +72,6 @@ body {
   width: 140px;
   height: 140px;
   font-size: 35px;
-  text-align: center;
   margin-left: -30px;
   margin-top: -30px;
 }
@@ -129,11 +128,11 @@ button {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 225px 225px 225px;
+  grid-template-columns: 200px 200px 200px;
+  grid-row-gap: 3px;
+  grid-column-gap: 10px;
   background-color: rgb(138, 209, 56);
   padding: 10px;
-  border-radius: 10%;
-  margin-left: 400px;
 }
 
 .grid-item {
@@ -143,9 +142,8 @@ button {
   padding: 30px;
   width: 140px;
   height: 140px;
-  font-size: 35px;
-  margin: 3px;
   border: 2px solid black;
+  margin-left: 430px;
 }
 
 .nameofgame {
@@ -165,9 +163,8 @@ button {
 #gameover {
   position: absolute;
   display: none;
+  margin-left: 550px;
   margin-top: -500px;
-  margin-left: 150px;
-  margin-right: 100px;
   padding: 100px;
   text-align: center;
   background-color: black;
