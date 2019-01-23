@@ -1,47 +1,69 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-  class WhackATroll {
+
+  class WhackATroll {  // class contructor
     constructor() {
-      // this.trollImgSrc = "images\troll.jpg";
       this.trollImg = new Image();
-      this.playerChoices = [];
-      this.randomTrollChoices = [];
       this.score = 0;
       this.startBtn = document.getElementById('start');
       this.boxes = document.getElementsByClassName('grid-item');
       this.trolls = document.getElementsByClassName('troll');
       this.random;
-      this.timerUp = 10;
+      this.timerUp = 0;
+      this.gameOver = document.getElementsByClassName('grid-container');
     }
+
+    animateCircle() {
+      let circle = document.createElement('div');
+      document.addEventListener('mousemove', e => {
+        console.log('yeah');
+        
+        // circle.setAttribute('class', 'circle');
+        // circle.style.left = e.clientX + 'px';
+        // circle.style.top = e.clientY + 'px';
+        // circle.style.transition = "all 0.5s linear 0s";
+        // // document.appendChild(circle);
+        // circle.style.left = circle.offsetLeft - 20 + 'px';
+        // circle.style.top = circle.offsetTop - 20 + 'px';
+    
+        // circle.style.width = "50px";
+        // circle.style.height = "50px";
+        // circle.style.borderWidth = "5px";
+        // circle.style.opacity = 0;
+      });
+    }
+
     // random troll generator
     randomTrollGenerator() {
       let randomNumber = Math.floor(Math.random() * 9);          // random sequence created by math.random with amount of boxes on screen
-      this.trolls[randomNumber].classList.add('trollsprite');    // added image of troll and named it trollsprite
+      this.trolls[randomNumber].classList.add('trollsprite');    // added image of troll and named it classname trollsprite
       console.log(randomNumber);
     }
     // timer of game 
     setTime() {
       this.startBtn.addEventListener('click', e => {
-        setInterval(e => {                                      // set interval so every sec the timer counts down
+        var interval = setInterval(e => {           // set interval so every sec the timer counts down
           if (this.timerUp <= 10) {
             //console.log(this.timerUp);
-            this.timerUp--;
+            this.timerUp += 1;
             document.getElementById('timer').innerHTML = this.timerUp;
           }
-          if (this.timerUp === -1) {
-            alert('Time is up!');
+          if (this.timerUp === 10) {
+            // this.boxes.document.getElementsByClassName('grid-item').style.display = "none";
+            // document.getElementsByClassName('gameover').style.display = "block";
+            console.log('end'); 
+            clearInterval(interval);
           }
         }, 1000);
       });
     }
-
     //remove trolls
     removeTroll() {
       for (let i = 0; i < this.trolls.length; i++) {
         this.trolls[i].classList.remove("trollsprite"); // removes trolls
       }
     }
-    // adding eventlistener to boxes
+    // adding onclick to boxes
     addListenersToBoxes() {
       for (let i = 0; i < this.trolls.length; i++) {
         this.trolls[i].addEventListener('click', e => { // onclick function when you click on troll adds 1 point. 
@@ -58,15 +80,26 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
   const newGame = new WhackATroll(); // newGame is out instance of our object
+  newGame.animateCircle(); 
   newGame.setTime();  
     newGame.startBtn.addEventListener('click', function(e) {
         newGame.addListenersToBoxes();
-        setInterval(function() {
+        var timesRun = 0;
+        var stop1 = setInterval(function() {
           newGame.randomTrollGenerator();
-        }, 1100);
-        setInterval(function() {
+          timesRun += 1;
+          if (timesRun === 10) {
+            clearInterval(stop1);
+          }            // generates random trolls at different times
+        }, 1000);
+        var timesRun2 = 0;
+        var stop2 = setInterval(function() {
           newGame.randomTrollGenerator();
-        }, 800);
+          timesRun2 += 1;
+          if (timesRun2 === 13) {
+            clearInterval(stop2);
+          }
+        }, 750);
         setInterval(function(){
           newGame.removeTroll();
         }, 1800);
