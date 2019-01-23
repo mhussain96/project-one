@@ -11,28 +11,25 @@ document.addEventListener("DOMContentLoaded", function() {
       this.boxes = document.getElementsByClassName('grid-item');
       this.trolls = document.getElementsByClassName('troll');
       this.random;
-      this.timerUp = 0;
-      // this.timerUp = document.getElementById('timer');
-
-      
+      this.timerUp = 10;
     }
     // random troll generator
     randomTrollGenerator() {
-      let randomNumber = Math.floor(Math.random() * 9); // random sequence created by math.random with amount of boxes on screen
-      this.trolls[randomNumber].classList.add('trollsprite'); // added image of troll and named it trollsprite
+      let randomNumber = Math.floor(Math.random() * 9);          // random sequence created by math.random with amount of boxes on screen
+      this.trolls[randomNumber].classList.add('trollsprite');    // added image of troll and named it trollsprite
       console.log(randomNumber);
     }
-
+    // timer of game 
     setTime() {
       this.startBtn.addEventListener('click', e => {
-        setInterval(e => {
-          if (this.timerUp <= 11) {
+        setInterval(e => {                                      // set interval so every sec the timer counts down
+          if (this.timerUp <= 10) {
             //console.log(this.timerUp);
-            this.timerUp++;
+            this.timerUp--;
             document.getElementById('timer').innerHTML = this.timerUp;
           }
-          if (this.timerUp === 11) {
-            alert('game over');
+          if (this.timerUp === -1) {
+            alert('Time is up!');
           }
         }, 1000);
       });
@@ -64,7 +61,6 @@ document.addEventListener("DOMContentLoaded", function() {
   newGame.setTime();  
     newGame.startBtn.addEventListener('click', function(e) {
         newGame.addListenersToBoxes();
-        //newGame.setTime();
         setInterval(function() {
           newGame.randomTrollGenerator();
         }, 1100);

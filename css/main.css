@@ -4,6 +4,7 @@
 
 body {
   background-color: rgb(138, 209, 56);
+  margin-top: -25px;
 }
 
 /* index html */
@@ -88,7 +89,7 @@ body {
   text-align: center;
   width: 200px;
   height: 100px;
-  margin-left: 1200px;
+  margin-left: 100px;
   margin-top: -100px;
   border-radius: 10%;
 }
@@ -107,6 +108,15 @@ button {
   margin-right: auto;
   letter-spacing: 2px;
   border-radius: 10%;
+}
+
+#reset {
+  margin-top: 5px;
+}
+
+.resetbtn {
+  text-decoration: none;
+  color: black;
 }
 
 .grid-container {
@@ -134,7 +144,8 @@ button {
   text-align: center;
   letter-spacing: 4px;
   color: white;
-  text-decoration: underline overline;
+  text-decoration: underline;
+  font-size: 25px;
 }
 
 
