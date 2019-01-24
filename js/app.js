@@ -76,14 +76,15 @@ document.addEventListener("DOMContentLoaded", function() {
             // console.log('hit');
             this.score++; 
             document.getElementById('finalscore').innerHTML = this.score;
-            this.sound.load();
-            this.sound.play();
+            this.sound.load();                          // loads sound again
+            this.sound.play();                          // plays sound
+            document.getElementById('hammer').style.transform = 'rotate(5deg)';
           } else if (this.timerUp === 10) {
             e.target.disabled = true;
           } else {
-            this.score--; // hitting the wrong box will make the user lose 1 point
+            this.score--;                               // hitting the wrong box will make the user lose 1 point
             document.getElementById('finalscore').innerHTML = this.score;
-            this.sound1.load();
+            this.sound1.load();                        
             this.sound1.play();
           }
         });

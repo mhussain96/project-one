@@ -1,6 +1,5 @@
 * {
   font-family: 'Gloria Hallelujah', cursive;
-  cursor: url('../images/hammer.png'), auto;
 }
 
 body {
@@ -84,6 +83,7 @@ body {
 
 .trollimg:hover {
   transform: scale(1.1) rotate(2deg);
+  cursor: url('../images/mallet.png'), auto;
 }
 
 /* game html */
@@ -145,6 +145,7 @@ button {
   height: 140px;
   border: 2px solid black;
   margin-left: 430px;
+  cursor: url('../images/mallet.png'), auto;
 }
 
 .nameofgame {
