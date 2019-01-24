@@ -24,6 +24,7 @@ body {
   padding: 1px 0 0 0;
   border-radius: 20%;
   border: 1px solid black;
+  box-shadow: 5px 10px 20px rgba(0,0,0, 0.5);
 }
 
 .innerbox {
@@ -33,6 +34,16 @@ body {
   border-radius: 20%;
   border: 1px solid black;
   text-align: center;
+  transition-property: background, border-radius;
+  transition-duration: 2s;
+  transition-timing-function: ease-out;
+}
+
+.innerbox:hover {
+  transform: scale(1.4);
+  transition: 3s;
+  background: lightskyblue;
+  border-radius: 40%;
 }
 
 .container {
@@ -110,6 +121,10 @@ body {
   margin-top: -30px;
 }
 
+.icons {
+  text-align: center;
+}
+
 button {
   display: grid;
   margin-left: auto;
@@ -153,13 +168,36 @@ button {
   letter-spacing: 4px;
   color: white;
   font-size: 50px;
+  filter: drop-shadow(0 10px 10px black);
 }
 
 .nameofgame1 {
   text-align: center;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
   letter-spacing: 4px;
   color: white;
   font-size: 50px;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid rgb(138, 209, 56); /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 7.0s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 50% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  25% { border-color: rgb(138, 209, 56); }
 }
 
 #gameover {
@@ -170,15 +208,14 @@ button {
   margin-bottom: -500px;
   padding: 77px;
   text-align: center;
-  background-color: rgb(179, 255, 0);
+  background-color: #c3ff0f;
   border-radius: 20px;
   pointer-events: none;
 }
 
-.reset1 {
+#reset1 {
   position: absolute;
   display: none;
-
 }
 
 

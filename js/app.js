@@ -48,12 +48,12 @@ document.addEventListener("DOMContentLoaded", function() {
     setTime() {
       this.startBtn.addEventListener('click', e => {
         var interval = setInterval(e => {           // set interval so every sec the timer counts down
-          if (this.timerUp <= 10) {
+          if (this.timerUp <= 15) {
             //console.log(this.timerUp);
             this.timerUp ++;
             document.getElementById('timer').innerHTML = this.timerUp;
           }
-          if (this.timerUp === 10) { 
+          if (this.timerUp === 15) { 
             // document.getElementsByClassName('grid-item').style.display = 'none';
             document.getElementById('gameover').style.display = "block";
             clearInterval(interval);
@@ -78,9 +78,9 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('finalscore').innerHTML = this.score;
             this.sound.load();                          // loads sound again
             this.sound.play();                          // plays sound
-            document.getElementById('hammer').style.transform = 'rotate(5deg)';
-          } else if (this.timerUp === 10) {
+          } else if (this.timerUp === 15) {
             e.target.disabled = true;
+            document.getElementById('reset1').style.display = "block";
           } else {
             this.score--;                               // hitting the wrong box will make the user lose 1 point
             document.getElementById('finalscore').innerHTML = this.score;
@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
             this.sound1.play();
           }
         });
+        document.getElementById('reset1').style.display = "block";
       }
     }
   }
@@ -99,16 +100,16 @@ document.addEventListener("DOMContentLoaded", function() {
         var timesRun = 0;
         var stop1 = setInterval(function() {
           newGame.randomTrollGenerator();
-          timesRun += 1;                            // 10000/1000 = 10 times it runs to generate troll
-          if (timesRun === 10) {
+          timesRun += 1;                            // 15000/1000 = 10 times it runs to generate troll
+          if (timesRun === 15) {
             clearInterval(stop1);
           }            // generates random trolls at different times
         }, 1000);
         var timesRun2 = 0;
         var stop2 = setInterval(function() {
           newGame.randomTrollGenerator();
-          timesRun2 += 1;                         // 10000/750 = 13.333 times it runs second troll generator
-          if (timesRun2 === 13) {
+          timesRun2 += 1;                         // 15000/750 = 13.333 times it runs second troll generator
+          if (timesRun2 === 20) {
             clearInterval(stop2);
           }
         }, 750);
