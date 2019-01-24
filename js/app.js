@@ -11,26 +11,32 @@ document.addEventListener("DOMContentLoaded", function() {
       this.random;
       this.timerUp = 0;
       this.gameOver = document.getElementsByClassName('grid-container');
+      this.sound = document.createElement('audio');
+      this.sound.src = 'sounds/Payout.wav';
+      this.sound1 = document.createElement('audio');
+      this.sound1.src = 'sounds/8d82b5_Evil_Laugh_Sound_FX.mp3';
+  
     }
 
-    animateCircle() {
-      let circle = document.createElement('div');
-      document.addEventListener('mousemove', e => {
-        console.log('yeah');
+    // animateCircle() {
+    //   let cursor = document.createElement('div');
+    //   document.addEventListener('mousemove', e => {
+    //     console.log('yeah');
         
-        circle.classList.add('circle1');
-        circle.style.left = e.clientX + 'px';
-        circle.style.top = e.clientY + 'px';
-        circle.style.transition = "all 0.5s linear 0s";
-        circle.style.left = circle.offsetLeft - 20 + 'px';
-        circle.style.top = circle.offsetTop - 20 + 'px';
+    //     cursor.classList.add('follow');
+    //     cursor.style.left = e.clientX + 'px';
+    //     cursor.style.top = e.clientY + 'px';
+    //     cursor.style.transition = "all 0.5s linear 0s";
+    //     cursor.style.left = cursor.offsetLeft - 20 + 'px';
+    //     cursor.style.top = cursor.offsetTop - 20 + 'px';
+    //     document.body.appendChild(cursor);
     
-        circle.style.width = "50px";
-        circle.style.height = "50px";
-        circle.style.borderWidth = "5px";
-        circle.style.opacity = 0;
-      });
-    }
+    //     cursor.style.width = "50px";
+    //     cursor.style.height = "50px";
+    //     cursor.style.borderWidth = "5px";
+    //     cursor.style.opacity = 1;
+    //   });
+    // }
 
     // random troll generator
     randomTrollGenerator() {
@@ -44,13 +50,12 @@ document.addEventListener("DOMContentLoaded", function() {
         var interval = setInterval(e => {           // set interval so every sec the timer counts down
           if (this.timerUp <= 10) {
             //console.log(this.timerUp);
-            this.timerUp += 1;
+            this.timerUp ++;
             document.getElementById('timer').innerHTML = this.timerUp;
           }
-          if (this.timerUp === 10) {
-            // this.boxes.document.getElementsByClassName('grid-item').style.display = "none";
-            document.getElementById('gameover').style.display = "block"; 
-            document.getElementsByClassName('grid-item').style.display = 'none';
+          if (this.timerUp === 10) { 
+            // document.getElementsByClassName('grid-item').style.display = 'none';
+            document.getElementById('gameover').style.display = "block";
             clearInterval(interval);
           }
         }, 1000);
@@ -68,19 +73,25 @@ document.addEventListener("DOMContentLoaded", function() {
       for (let i = 0; i < this.trolls.length; i++) {
         this.trolls[i].addEventListener('click', e => { // onclick function when you click on troll adds 1 point. 
           if (e.target.className === 'troll trollsprite') {   
-            console.log('hit');
+            // console.log('hit');
             this.score++; 
             document.getElementById('finalscore').innerHTML = this.score;
+            this.sound.load();
+            this.sound.play();
+          } else if (this.timerUp === 10) {
+            e.target.disabled = true;
           } else {
             this.score--; // hitting the wrong box will make the user lose 1 point
             document.getElementById('finalscore').innerHTML = this.score;
+            this.sound1.load();
+            this.sound1.play();
           }
         });
       }
     }
   }
   const newGame = new WhackATroll(); // newGame is out instance of our object
-  newGame.animateCircle(); 
+  // newGame.animateCircle(); 
   newGame.setTime();  
     newGame.startBtn.addEventListener('click', function(e) {
         newGame.addListenersToBoxes();

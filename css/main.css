@@ -1,5 +1,6 @@
 * {
   font-family: 'Gloria Hallelujah', cursive;
+  cursor: url('../images/hammer.png'), auto;
 }
 
 body {
@@ -88,7 +89,7 @@ body {
 /* game html */
 
 #start {
-  margin-top: -20px;
+  margin-top: -40px;
 }
 
 .scoreout {
@@ -150,7 +151,7 @@ button {
   text-align: center;
   letter-spacing: 4px;
   color: white;
-  font-size: 25px;
+  font-size: 50px;
 }
 
 .nameofgame1 {
@@ -163,13 +164,20 @@ button {
 #gameover {
   position: absolute;
   display: none;
-  margin-left: 550px;
-  margin-top: -500px;
-  padding: 100px;
+  margin-left: 435px;
+  margin-top: -630px;
+  margin-bottom: -500px;
+  padding: 77px;
   text-align: center;
-  background-color: black;
-  color: white;
-  border-radius: 30px;
+  background-color: rgb(179, 255, 0);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.reset1 {
+  position: absolute;
+  display: none;
+
 }
 
 
