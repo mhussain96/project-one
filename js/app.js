@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
           if (this.timerUp === 15) { 
             // document.getElementsByClassName('grid-item').style.display = 'none';
             document.getElementById('gameover').style.display = "block";
+            document.getElementById('reset1').style.display = "block";
             clearInterval(interval);
           }
         }, 1000);
@@ -88,7 +89,6 @@ document.addEventListener("DOMContentLoaded", function() {
             this.sound1.play();
           }
         });
-        document.getElementById('reset1').style.display = "block";
       }
     }
   }

@@ -123,6 +123,7 @@ body {
 
 .icons {
   text-align: center;
+  font-size: 10px
 }
 
 button {
@@ -204,7 +205,7 @@ button {
   position: absolute;
   display: none;
   margin-left: 435px;
-  margin-top: -630px;
+  margin-top: -640px;
   margin-bottom: -500px;
   padding: 77px;
   text-align: center;
@@ -218,4 +219,7 @@ button {
   display: none;
 }
 
-
+.thor {
+  margin-left: 1150px;
+  margin-top: -750px;
+}
