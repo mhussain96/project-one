@@ -1,62 +1,126 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-  class WhackATroll {
+
+  class WhackATroll {  // class contructor
     constructor() {
-      // this.trollImgSrc = "images\troll.jpg";
       this.trollImg = new Image();
-      this.playerChoices = [];
-      this.randomTrollChoices = [];
-      this.score = document.getElementById('finalscore');
-      this.startGame = document.getElementsByTagName('button');
+      this.score = 0;
+      this.startBtn = document.getElementById('start');
       this.boxes = document.getElementsByClassName('grid-item');
       this.trolls = document.getElementsByClassName('troll');
-      
-    }
-    // random troll generator
-    randomTrollGenerator() {
-      for (let i = 0; i < this.boxes.length; i++) {
-        let randomNumber = Math.floor(Math.random() * this.boxes.length);
-        this.trolls[randomNumber].setAttribute('src', 'images\troll.jpg') ;
-        // let randomTroll = document.getElementsByClassName('troll');
-        this.randomTrollChoices.push(this.boxes[randomNumber]);
-        console.log(randomNumber);
-      }
+      this.random;
+      this.timerUp = 0;
+      this.gameOver = document.getElementsByClassName('grid-container');
+      this.sound = document.createElement('audio');
+      this.sound.src = 'sounds/Payout.wav';
+      this.sound1 = document.createElement('audio');
+      this.sound1.src = 'sounds/8d82b5_Evil_Laugh_Sound_FX.mp3';
+  
     }
 
-    flashColor() {
-      for (let i = 0; i < this.randomTrollChoices.length; i++) {
-        const box = this.randomTrollChoices[i];
-        console.log(box);
-        setTimeout(function() {
-          box.style.backgroundColor = 'red';   // 2 timeouts to flash trolls
-          box.style.clear = 'red';
-        }, 1000 * i);
-        setTimeout(function() {
-          box.style.backgroundColor = 'rgb(255, 255, 255)';
-          box.style.clear = 'white'
-        }, 1000 * i + 500);
+    // animateCircle() {
+    //   let cursor = document.createElement('div');
+    //   document.addEventListener('mousemove', e => {
+    //     console.log('yeah');
+        
+    //     cursor.classList.add('follow');
+    //     cursor.style.left = e.clientX + 'px';
+    //     cursor.style.top = e.clientY + 'px';
+    //     cursor.style.transition = "all 0.5s linear 0s";
+    //     cursor.style.left = cursor.offsetLeft - 20 + 'px';
+    //     cursor.style.top = cursor.offsetTop - 20 + 'px';
+    //     document.body.appendChild(cursor);
+    
+    //     cursor.style.width = "50px";
+    //     cursor.style.height = "50px";
+    //     cursor.style.borderWidth = "5px";
+    //     cursor.style.opacity = 1;
+    //   });
+    // }
+
+    // random troll generator
+    randomTrollGenerator() {
+      let randomNumber = Math.floor(Math.random() * 9);          // random sequence created by math.random with amount of boxes on screen
+      this.trolls[randomNumber].classList.add('trollsprite');    // added image of troll and named it classname trollsprite
+      console.log(randomNumber);
+    }
+    // timer of game 
+    setTime() {
+      this.startBtn.addEventListener('click', e => {
+        var interval = setInterval(e => {           // set interval so every sec the timer counts down
+          if (this.timerUp < 15) {
+            //console.log(this.timerUp);
+            this.timerUp ++;
+            document.getElementById('timer').innerHTML = this.timerUp;
+          }
+          if (this.timerUp === 15) { 
+            // for (i = 0; i < 9; i++) {
+              // document.getElementsByClassName('grid-item')[-1].style.display = 'none';
+              
+            // }
+            document.getElementById('gameover').style.display = "block";
+            document.getElementById('reset1').style.display = "block";
+            clearInterval(interval);
+          }
+        }, 1000);
+      });
+    }
+
+    //remove trolls
+    removeTroll() {
+      for (let i = 0; i < this.trolls.length; i++) {
+        this.trolls[i].classList.remove("trollsprite"); 
       }
     }
-    // adding eventlistener to boxes
+    // adding onclick to boxes
     addListenersToBoxes() {
-      for (let i = 0; i < this.boxes.length; i++) {
-        this.trolls[i].addEventListener('click', e => {
-          // console.log(e.target.className);
-          this.playerChoices.push(e.target.className); 
-          if (this.trolls[i].hasAttribute('src')) {
-            console.log('hit');
-            
+      for (let i = 0; i < this.trolls.length; i++) {
+        this.trolls[i].addEventListener('click', e => { // onclick function when you click on troll adds 1 point. 
+          if (e.target.className === 'troll trollsprite') {   
+            // console.log('hit');
+            this.score++; 
+            document.getElementById('finalscore').innerHTML = this.score;
+            this.sound.load();                          // loads sound again
+            this.sound.play();                          // plays sound
+          } else if (this.timerUp === 15) {
+            e.target.disabled = true;
+            document.getElementById('reset1').style.display = "block";
+          } else {
+            this.score--;                               // hitting the wrong box will make the user lose 1 point
+            document.getElementById('finalscore').innerHTML = this.score;
+            this.sound1.load();             
+            this.sound1.play();
           }
         });
       }
     }
   }
-  const newGame = new WhackATroll();
-  newGame.addListenersToBoxes();
-  newGame.randomTrollGenerator();
-  newGame.flashColor();
-
-
+  const newGame = new WhackATroll(); // newGame is out instance of our object
+  // newGame.animateCircle(); 
+  newGame.setTime();  
+    newGame.startBtn.addEventListener('click', function(e) {
+        newGame.addListenersToBoxes();
+        var timesRun = 0;
+        var stop1 = setInterval(function() {
+          newGame.randomTrollGenerator();
+          timesRun += 1;                            // 15000/1000 = 10 times it runs to generate troll
+          if (timesRun === 15) {
+            clearInterval(stop1);
+          }            // generates random trolls at different times
+        }, 1000);
+        var timesRun2 = 0;
+        var stop2 = setInterval(function() {
+          newGame.randomTrollGenerator();
+          timesRun2 += 1;                         // 15000/750 = 13.333 times it runs second troll generator
+          if (timesRun2 === 20) {
+            clearInterval(stop2);
+          }
+        }, 750);
+        setInterval(function(){
+          newGame.removeTroll();
+        }, 1800);
+        e.target.disabled = true;
+    });
 }); // DOMContentLoaded
 
 // PSEUDOCODE
