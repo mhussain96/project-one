@@ -48,13 +48,16 @@ document.addEventListener("DOMContentLoaded", function() {
     setTime() {
       this.startBtn.addEventListener('click', e => {
         var interval = setInterval(e => {           // set interval so every sec the timer counts down
-          if (this.timerUp <= 15) {
+          if (this.timerUp < 15) {
             //console.log(this.timerUp);
             this.timerUp ++;
             document.getElementById('timer').innerHTML = this.timerUp;
           }
           if (this.timerUp === 15) { 
-            // document.getElementsByClassName('grid-item').style.display = 'none';
+            // for (i = 0; i < 9; i++) {
+              // document.getElementsByClassName('grid-item')[-1].style.display = 'none';
+              
+            // }
             document.getElementById('gameover').style.display = "block";
             document.getElementById('reset1').style.display = "block";
             clearInterval(interval);
@@ -85,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
           } else {
             this.score--;                               // hitting the wrong box will make the user lose 1 point
             document.getElementById('finalscore').innerHTML = this.score;
-            this.sound1.load();                        
+            this.sound1.load();             
             this.sound1.play();
           }
         });

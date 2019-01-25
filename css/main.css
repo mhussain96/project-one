@@ -169,6 +169,7 @@ button {
   letter-spacing: 4px;
   color: white;
   font-size: 50px;
+  margin-right: 20px;
   filter: drop-shadow(0 10px 10px black);
 }
 
@@ -204,12 +205,12 @@ button {
 #gameover {
   position: absolute;
   display: none;
-  margin-left: 435px;
+  margin-left: 440px;
   margin-top: -640px;
   margin-bottom: -500px;
-  padding: 77px;
+  padding: 125px 77px 125px 77px;
   text-align: center;
-  background-color: #c3ff0f;
+  background-color: black;
   border-radius: 20px;
   pointer-events: none;
 }
