@@ -87,6 +87,10 @@ body {
   margin-top: -30px;
 }
 
+.trollsprite:active {
+  cursor: url('../images/mallet.png') 30 10, auto;
+}
+
 .trollsprite {
   background-image: url('../images/troll.jpg');
   position: relative;
