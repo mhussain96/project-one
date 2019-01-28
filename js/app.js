@@ -17,27 +17,6 @@ document.addEventListener("DOMContentLoaded", function() {
       this.sound1.src = 'sounds/8d82b5_Evil_Laugh_Sound_FX.mp3';
   
     }
-
-    // animateCircle() {
-    //   let cursor = document.createElement('div');
-    //   document.addEventListener('mousemove', e => {
-    //     console.log('yeah');
-        
-    //     cursor.classList.add('follow');
-    //     cursor.style.left = e.clientX + 'px';
-    //     cursor.style.top = e.clientY + 'px';
-    //     cursor.style.transition = "all 0.5s linear 0s";
-    //     cursor.style.left = cursor.offsetLeft - 20 + 'px';
-    //     cursor.style.top = cursor.offsetTop - 20 + 'px';
-    //     document.body.appendChild(cursor);
-    
-    //     cursor.style.width = "50px";
-    //     cursor.style.height = "50px";
-    //     cursor.style.borderWidth = "5px";
-    //     cursor.style.opacity = 1;
-    //   });
-    // }
-
     // random troll generator
     randomTrollGenerator() {
       let randomNumber = Math.floor(Math.random() * 9);          // random sequence created by math.random with amount of boxes on screen
@@ -103,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var timesRun = 0;
         var stop1 = setInterval(function() {
           newGame.randomTrollGenerator();
-          timesRun += 1;                            // 15000/1000 = 10 times it runs to generate troll
+          timesRun += 1;                            // 15000/1000 = 15 times it runs to generate troll
           if (timesRun === 15) {
             clearInterval(stop1);
           }            // generates random trolls at different times
@@ -111,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var timesRun2 = 0;
         var stop2 = setInterval(function() {
           newGame.randomTrollGenerator();
-          timesRun2 += 1;                         // 15000/750 = 13.333 times it runs second troll generator
+          timesRun2 += 1;                         // 15000/750 = 20 times it runs second troll generator
           if (timesRun2 === 20) {
             clearInterval(stop2);
           }

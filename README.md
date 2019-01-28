@@ -1,20 +1,20 @@
-#Whack-A-Troll 
+# Whack-A-Troll 
 
 A simple mouseclick game based on the classic Whack-A-Mole arcade game, built to run in the browser.
 
-##Instructions 
+## Instructions 
 
 Ready for some fast-action, troll-whackin' fun? Grab your mallet and hit the troll when he pops up for a point, but beware, if you hit the wrong box you lose a point. You have 15 seconds to whack your way to the highest score!
 
-##Link to Game 
+## Link to Game 
 
 [link](http://127.0.0.1:5500/index.html)
 
-##Controls
+## Controls
 
 - Use the mouse to click on the trolls to gain points.
 
-##Implementation
+## Implementation
 
 The functionality has been implementated using:
 
