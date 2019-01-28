@@ -87,6 +87,10 @@ body {
   margin-top: -30px;
 }
 
+.trollsprite:active {
+  cursor: url('../images/mallet.png') 10 0, auto;
+}
+
 .trollsprite {
   background-image: url('../images/troll.jpg');
   position: relative;
@@ -205,8 +209,8 @@ button {
 #gameover {
   position: absolute;
   display: none;
-  margin-left: 440px;
-  margin-top: -640px;
+  margin-left: 420px;
+  margin-top: 0px;
   margin-bottom: -500px;
   padding: 125px 77px 125px 77px;
   text-align: center;
