@@ -8,7 +8,7 @@ Ready for some fast-action, troll-whackin' fun? Grab your mallet and hit the tro
 
 ## Link to Game 
 
-[link](http://127.0.0.1:5500/index.html)
+[link](https://mhussain96.github.io/project-one/)
 
 ## Controls
 
